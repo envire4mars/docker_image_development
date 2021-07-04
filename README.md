@@ -81,6 +81,7 @@ version will be incremented when new functionality is added in a backwards compa
 
 ## Instruction to Generate envireMars container
 
+Please read the [envire_mars_development howto](doc/envire_mars_development.md)
 
 ## License
 
