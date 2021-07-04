@@ -16,6 +16,7 @@ ENV SHELL="/bin/bash"
 # add workspace init to container initialization
 ADD setup_workspace.bash /opt/setup_workspace.bash
 RUN chmod 755 /opt/setup_workspace.bash
+ADD config.yml /opt/config.yml
 
 # add the dependency list to the image
 ADD workspace_os_dependencies.txt /opt/installed_workspace_os_dependencies.txt

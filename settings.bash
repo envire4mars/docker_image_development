@@ -5,11 +5,11 @@ export PROJECT_NAME=envire_mars
 
 # path to your docker registry, leave blank if you don't have one
 # e.g. my.registry.com, ghcr.io/dfki-ric, docker.pkg.github.com
-export DOCKER_REGISTRY=
+export DOCKER_REGISTRY=d-reg.hb.dfki.de
 
 # in case you are not using a single registry, you can push images in different ones
 # e.g. store base images on hub.docker.com and others in a local registry
-export BASE_REGISTRY=
+export BASE_REGISTRY=d-reg.hb.dfki.de
 export DEVEL_REGISTRY=$DOCKER_REGISTRY
 export RELEASE_REGISTRY=$DOCKER_REGISTRY
 
