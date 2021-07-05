@@ -51,7 +51,7 @@ You will be asked for your user and password for the DFKI repos, since some are 
 rm has_gpu_suppor.txt
 bash exec.bash devel
 ```
-2. Now from within the container 
+3. Now from within the container 
 ```bash
 cd /opt
 bash setup_workspace.bash
