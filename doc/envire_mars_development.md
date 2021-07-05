@@ -44,3 +44,9 @@ bash build.bash
 ## Generate the Devel Container
 
 You will be asked for your user and password for the DFKI repos, since some are needed for this intallation.
+
+0. Go to the root folder of this repo
+0. Run
+```bash
+bash exec.bash devel
+```
