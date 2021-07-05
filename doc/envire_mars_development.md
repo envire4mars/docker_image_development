@@ -5,8 +5,14 @@ To create the container where development is possible, we need first a `base ima
 If you have access to the dfki docker registry, you can skip this step.
 If you don't have access to the DFKI docker registry, then you will have to generate locally on your machine the image:
 
-0. Go to `image_setup/01_base_images`
-0. Run 
+1. Modify `settings.bash` file, to set these variables blank as shown below:
+```
+export DOCKER_REGISTRY=
+export BASE_REGISTRY=
+```
+ 
+2. Go to `image_setup/01_base_images`
+3. Run 
 ```bash
 bash build_rock_master_18.04.bash
 ```
@@ -18,9 +24,17 @@ d-reg.hb.dfki.de/developmentimage/rock_master_18.04              base           
 ```
 
 ## Generate the Devel Image
+If you have access to the dfki docker registry, you can skip this step.
+If you don't have access to the DFKI docker registry, then you will have to generate locally on your machine the image:
 
-0. Go to `image_setup/02_devel_images`
-0. Run 
+1. Modify `settings.bash` file, to set these variables blank as shown below:
+```
+export DOCKER_REGISTRY= 
+export BASE_REGISTRY=
+```
+ 
+2. Go to `image_setup/02_devel_images`
+3. Run 
 ```bash
 bash build.bash
 ```
