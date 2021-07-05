@@ -48,5 +48,11 @@ You will be asked for your user and password for the DFKI repos, since some are 
 0. Go to the root folder of this repo
 0. Run
 ```bash
+rm has_gpu_suppor.txt
 bash exec.bash devel
+```
+0. Now from within the container 
+```bash
+cd /opt
+bash setup_workspace.bash
 ```
