@@ -6,9 +6,19 @@ export TAG=$(date +%Y_%m_%d-%H_%M)
 export HOST=$(hostname)
 export DEVEL_IMAGE_NAME=${DEVEL_REGISTRY:+${DEVEL_REGISTRY}/}$WORKSPACE_DEVEL_IMAGE
 
+#TODO make local dockerignore file
+#     append local docker ignore file to root docker ignore file
+#     restore docker ignore file by removing last lines and rewriting it to root ignore file
+
 #if [ "$DOCKER_REGISTRY_AUTOPULL" = true ]; then
     #do not pull for release, use the local image, as the release should be based on the exact same devel image
 #fi
+
+
+echo "Append directories to .dockerignore file"
+FROM=$(expr $(cat ../../.dockerignore | wc -l) + 1)
+cat .dockerignore.extend >> ../../.dockerignore
+TO=$(cat ../../.dockerignore | wc -l)
 
 RELEASE_IMAGE_NAME=${RELEASE_REGISTRY:+${RELEASE_REGISTRY}/}$WORKSPACE_RELEASE_IMAGE
 echo "Buidling release image: ${RELEASE_IMAGE_NAME}_$TAG by $USER on $HOST Date: $DATE"
@@ -22,6 +32,9 @@ docker build --no-cache --build-arg DEVEL_IMAGE_NAME --build-arg USER --build-ar
 
 echo "tagging $RELEASE_IMAGE_NAME as ${RELEASE_IMAGE_NAME}_$TAG"
 docker tag $RELEASE_IMAGE_NAME ${RELEASE_IMAGE_NAME}_$TAG
+
+sed -i "${FROM},${TO}d" ../../.dockerignore
+echo "Restored original content of .dockerignore file"
 
 echo
 echo "don't forget to push the image if you wish:"
