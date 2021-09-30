@@ -25,9 +25,11 @@ autoconf
  libboost-system-dev 
  libboost-thread-dev 
  libcgal-dev 
+ libdw-dev 
  libeigen3-dev 
  libflann-dev 
  libgdal-dev 
+ libgoogle-glog-dev 
  libjpeg-dev 
  libjsoncpp-dev 
  liblapack-dev 

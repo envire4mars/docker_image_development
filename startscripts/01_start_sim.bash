@@ -16,6 +16,8 @@ function handle_interupt() {
 source /opt/workspace/env.sh
 echo "Using $BUNDLE bundle\n"
 rock-bundle-sel $BUNDLE
+echo "Restarting omniorb nameserver\n"
+bash /opt/workspace/tools/cnd/execution/systemd/omniorb_restart.sh
 echo "Starting rock-runtime\n"
 rock-runtime &
 echo "Launching $CND\n"
