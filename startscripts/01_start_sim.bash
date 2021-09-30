@@ -2,7 +2,7 @@
 
 # configure
 BUNDLE=sherpa_tt_corobx
-CND=compositions/simulation.cnd
+CND=simulation.cnd
 
 # trap ctrl-c and call handle_interupt()
 trap 'handle_interupt' INT
@@ -14,11 +14,7 @@ function handle_interupt() {
 
 
 source /opt/workspace/env.sh
-echo "Using $BUNDLE bundle\n"
+echo "Using $BUNDLE bundle"
 rock-bundle-sel $BUNDLE
-echo "Restarting omniorb nameserver\n"
-bash /opt/workspace/tools/cnd/execution/systemd/omniorb_restart.sh
-echo "Starting rock-runtime\n"
-rock-runtime &
-echo "Launching $CND\n"
-rock-launch $CND
+echo "Launching $CND"
+rock-launch -b $CND
