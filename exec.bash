@@ -112,10 +112,6 @@ DOCKER_RUN_ARGS=" \
                 -u $CONTAINER_USER \
                 -e DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix \
                 $ADDITIONAL_DOCKER_RUN_ARGS \
-                -p 57781:57781 \
-                -p 57782:57782 \
-                -p 57783:57783 \
-                -p 57784:57784 \
                 $ADDITIONAL_DOCKER_MOUNT_ARGS \
                 "
 
