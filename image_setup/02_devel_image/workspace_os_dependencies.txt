@@ -28,8 +28,10 @@ autoconf
  libdw-dev 
  libeigen3-dev 
  libflann-dev 
+ libfreetype6-dev 
  libgdal-dev 
  libgoogle-glog-dev 
+ libharfbuzz-dev 
  libjpeg-dev 
  libjsoncpp-dev 
  liblapack-dev 
@@ -53,6 +55,7 @@ autoconf
  libtool 
  libusb-dev 
  libv4l-dev 
+ libvlc-dev 
  libxml-xpath-perl 
  libxml2-dev 
  libyaml-cpp-dev 

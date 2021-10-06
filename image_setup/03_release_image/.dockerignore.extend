@@ -1,15 +1,31 @@
-/opt/workspace/autoproj/
-/opt/workspace/autoproj_bootstrap
-/opt/workspace/base
-/opt/workspace/control
-/opt/workspace/drivers
-/opt/workspace/envire
-/opt/workspace/external
-/opt/workspace/gui
-/opt/workspace/interaction/orogen/
-/opt/workspace/models
-/opt/workspace/perception
-/opt/workspace/sherpa_tt
-/opt/workspace/simulation
-/opt/workspace/slam
-/opt/workspace/tools
+# workspace sources
+workspace/autoproj
+workspace/autoproj_bootstrap
+workspace/base
+workspace/control
+workspace/drivers
+workspace/envire
+workspace/external
+workspace/gui
+workspace/interaction/orogen
+workspace/perception
+workspace/sherpa_tt
+workspace/simulation
+workspace/slam
+workspace/tools/cnd
+**/*.cpp
+**/*.c
+
+# log directories and files
+**/*.log
+**/log
+**/logs
+
+# exceptions
+!workspace/base/scripts/bin
+!workspace/base/scripts/lib
+!workspace/base/scripts/shell
+!workspace/models
+!workspace/tools
+!workspace/tools/cnd/orogen/execution/systemd/omniorb_restart.sh
+

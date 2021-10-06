@@ -2,7 +2,7 @@
 
 BUNDLE=sherpa_tt_corobx
 CND=simulation.cnd
-
+LOGDIR=/opt/workspace
 
 # trap ctrl-c and call handle_interupt()
 trap 'handle_interupt' INT
@@ -20,9 +20,8 @@ echo "Selecting bundle $BUNDLE"
 rock-bundle-sel $BUNDLE
 echo "Starting rock_runtime"
 #ruby /opt/workspace/bundles/sherpa_tt_corobx/scripts/rock-runtime-simple.rb
-rock-runtime &
-
-sleep 5
+rock-runtime > $LOGDIR/rock-runtime.log 2>&1 &
+{ tail -n +1 -f $LOGDIR/rock-runtime.log & } | sed -n '/Press\ <CTRL+C>\ to\ exit.../q'
 
 echo "Launching $CND"
 rock-launch -b $CND
