@@ -12,14 +12,6 @@ workspace/perception
 workspace/sherpa_tt
 workspace/simulation
 workspace/slam
-workspace/tools/cnd
-**/*.cpp
-**/*.c
-
-# log directories and files
-**/*.log
-**/log
-**/logs
 
 # exceptions
 !workspace/base/scripts/bin
@@ -27,5 +19,12 @@ workspace/tools/cnd
 !workspace/base/scripts/shell
 !workspace/models
 !workspace/tools
+workspace/tools/cnd
 !workspace/tools/cnd/orogen/execution/systemd/omniorb_restart.sh
 
+# log directories and source files
+**/*.log
+**/log
+**/logs
+**/*.cpp
+**/*.c

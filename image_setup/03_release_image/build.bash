@@ -1,21 +1,24 @@
 . ../../settings.bash
 
+# trap ctrl-c and call handle_interupt()
+trap 'handle_interupt' INT
+function handle_interupt() {
+    echo -e "\e[32m*** Trapped CTRL-C"
+    if [ ! -z $FROM ] && [ ! -z $TO ]; then
+        echo -e "  => Restoring .dockerignore file"
+        sed -i "${FROM},${TO}d" ../../.dockerignore
+    fi
+    echo -e "\e[0m"
+    exit 0
+}
+
 #docker build paramaters
 export DATE=$(date)
 export TAG=$(date +%Y_%m_%d-%H_%M)
 export HOST=$(hostname)
 export DEVEL_IMAGE_NAME=${DEVEL_REGISTRY:+${DEVEL_REGISTRY}/}$WORKSPACE_DEVEL_IMAGE
 
-#TODO make local dockerignore file
-#     append local docker ignore file to root docker ignore file
-#     restore docker ignore file by removing last lines and rewriting it to root ignore file
-
-#if [ "$DOCKER_REGISTRY_AUTOPULL" = true ]; then
-    #do not pull for release, use the local image, as the release should be based on the exact same devel image
-#fi
-
-
-echo "Append directories to .dockerignore file"
+echo "Append .dockerignor.extend to root .dockerignore file"
 FROM=$(expr $(cat ../../.dockerignore | wc -l) + 1)
 cat .dockerignore.extend >> ../../.dockerignore
 TO=$(cat ../../.dockerignore | wc -l)
