@@ -37,7 +37,7 @@ export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with
 # under normal circumstances you should not need to change these
 export WORKSPACE_DEVEL_IMAGE=developmentimage/${PROJECT_NAME}:devel
 #export WORKSPACE_RELEASE_IMAGE=developmentimage/${PROJECT_NAME}:release
-export WORKSPACE_RELEASE_IMAGE=corob-x/docker_image_development/${PROJECT_NAME}:release
+export WORKSPACE_RELEASE_IMAGE=corob-x/consortium/docker_image_development/${PROJECT_NAME}:release
 
 # In case your docker container needs special run paramaters
 # like open ports, additional mounts etc.
