@@ -14,6 +14,7 @@ $ docker login git.hb.dfki.de:5050 -u USER -p TOKEN
 ## Startscripts for CoRob-X:
 
 Run the simulation setup:
+
     $ source autocomplete.me
     $ ./exec.bash 03_start_sim2.bash
 
