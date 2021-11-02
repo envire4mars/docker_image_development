@@ -11,7 +11,7 @@ export DOCKER_REGISTRY=d-reg.hb.dfki.de
 # e.g. store base images on hub.docker.com and others in a local registry
 export BASE_REGISTRY=
 export DEVEL_REGISTRY=$DOCKER_REGISTRY
-export RELEASE_REGISTRY=$DOCKER_REGISTRY
+export RELEASE_REGISTRY=git.hb.dfki.de:5050
 
 # should exec and build scripts auto-pull updated images from the registry?
 export DOCKER_REGISTRY_AUTOPULL=false
@@ -36,7 +36,8 @@ export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with
 # e.g MY_PROJECT/docker_image_development:devel
 # under normal circumstances you should not need to change these
 export WORKSPACE_DEVEL_IMAGE=developmentimage/${PROJECT_NAME}:devel
-export WORKSPACE_RELEASE_IMAGE=developmentimage/${PROJECT_NAME}:release
+#export WORKSPACE_RELEASE_IMAGE=developmentimage/${PROJECT_NAME}:release
+export WORKSPACE_RELEASE_IMAGE=corob-x/docker_image_development/${PROJECT_NAME}:release
 
 # In case your docker container needs special run paramaters
 # like open ports, additional mounts etc.
