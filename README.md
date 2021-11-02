@@ -1,3 +1,39 @@
+# Quickstart
+
+## Create access token to be able to load docker images:
+
+- edit profile
+- acess tokens
+- select a name
+- check read/write registry
+- copy your token
+
+$ docker login git.hb.dfki.de:5050 -u USER -p TOKEN
+
+
+## Startscripts for CoRob-X:
+
+Run the simulation setup:
+    $ source autocomplete.me
+    $ ./exec.bash 03_start_sim2.bash
+
+To stop the simulation just press 'q' in the terminal. If something goes wrong
+it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
+
+Once the simulation is running, one can start a control example via:
+
+    $ ./exec.bash 02_execute_controller_demo
+
+The cameras can be accessed via vlc ('media->open network stream': `http://0.0.0.0:57781/video.mjpg` to `http://0.0.0.0:57784/video.mjpg`).
+
+The demo controller can be found in the archive: "workspace/interaction/libraries/robot_remote_control/examples".
+
+## Notes:
+
+  If there are problems with processes that are not shut down correctly after stopping the simulation, it is recommended to stop the docker container before restarting the application:
+
+  $ ./stop.bash
+
 # Docker Image Development 
 
 This is a collection of scripts that enables a development process using docker images.

@@ -6,7 +6,7 @@ workspace/control
 workspace/drivers
 workspace/envire
 workspace/external
-workspace/gui
+#workspace/gui
 workspace/interaction/orogen
 workspace/perception
 workspace/sherpa_tt
@@ -28,3 +28,6 @@ workspace/tools/cnd
 **/logs
 **/*.cpp
 **/*.c
+
+# git folders
+**/.git
