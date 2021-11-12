@@ -11,29 +11,29 @@ set -e
 
 # ROCK BUILDCONF EXAMPLE
 #
-#if [ ! -f /opt/workspace/env.sh ]; then
-#    echo -e "\e[32m[INFO] First start: setting up the workspace.\e[0m"
-#
-#    # go to workspace dir
-#    cd /opt/workspace/
-#
-#    # set git config
-#    git config --global user.name "Image Builder"
-#    git config --global user.email "image@builder.me"
-#    git config --global credential.helper cache
-#
-#    # setup ws using autoproj
-#    wget rock-robotics.org/autoproj_bootstrap
-#    ruby autoproj_bootstrap git <BUILDCONF_URL> branch=master
-#    source env.sh
-#    aup
-#    amake
-#
-#    echo -e "\e[32m[INFO] workspace successfully initialized.\e[0m"
-#else 
-#    echo -e "\e[31m[ERROR] workspace already initialized.\e[0m"
-#    exit 1
-#fi
+if [ ! -f /opt/workspace/env.sh ]; then
+    echo -e "\e[32m[INFO] First start: setting up the workspace.\e[0m"
+
+    # go to workspace dir
+    cd /opt/workspace/
+
+    # set git config
+    git config --global user.name "Image Builder"
+    git config --global user.email "image@builder.me"
+    git config --global credential.helper cache
+
+    # setup ws using autoproj
+    wget rock-robotics.org/autoproj_bootstrap
+    ruby autoproj_bootstrap git https://github.com/envire4mars/simulation-buildconf.git branch=test_physics_plugins --seed-config=/opt/config.yml
+    source env.sh
+    aup
+    amake
+
+    echo -e "\e[32m[INFO] workspace successfully initialized.\e[0m"
+else 
+    echo -e "\e[31m[ERROR] workspace already initialized.\e[0m"
+    exit 1
+fi
 
 # ROS BUILDCONF EXAMPLE
 #
