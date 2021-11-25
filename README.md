@@ -1,4 +1,4 @@
-# Quickstart
+# Quickstart of the Corob-X simulator
 
 ## Create access token to be able to load docker images:
 
@@ -10,24 +10,64 @@
 
 $ docker login git.hb.dfki.de:5050 -u USER -p TOKEN
 
+## Clone this repository 
 
-## Startscripts for CoRob-X:
+First clone this repo if you haven't done it yet. Open a terminal and run this command to do so.
 
-Run the simulation setup:
+    $ git clone https://git.hb.dfki.de/corob-x/consortium/docker_image_development.git corob_x_docker_image_development
 
-    $ source autocomplete.me
-    $ ./exec.bash 03_start_sim2.bash
+## Startscripts for CoRob-X
+
+### Start the simulation
+
+Open a new terminal, go to the folder where you cloned the repo, and run these two commands.
+
+    $ cd corob_x_docker_image_development
+    corob_x_docker_image_development $ source autocomplete.me
+    corob_x_docker_image_development $ ./exec.bash start_sherpa_sim.bash
 
 To stop the simulation just press 'q' in the terminal. If something goes wrong
 it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
 
-Once the simulation is running, one can start a control example via:
+If everything starts fine, the simulation should look like this:
 
-    $ ./exec.bash 02_execute_controller_demo
+![](/doc/figures/simulationStarts.png)
+
+### Start a demo controller
+
+Once the simulation is running, to start a controller that will connect to the running simulation and move the robot. This has to be done in a new terminal:
+
+    corob_x_docker_image_development $ ./exec.bash execute_sherpa_controller_demo.bash
+
+If things starts fine, then the simulated robot should reach this position after a while (and continue moving):
+
+![](/doc/figures/sherpaControlled.png)
+
+### Access the camera streams
 
 The cameras can be accessed via vlc ('media->open network stream': `http://0.0.0.0:57781/video.mjpg` to `http://0.0.0.0:57784/video.mjpg`).
 
-The demo controller can be found in the archive: "workspace/interaction/libraries/robot_remote_control/examples".
+You can find more information about how to connect and process these video streams [here](http://wiki.ros.org/video_stream_opencv)
+
+### Accessing the release container with exec.bash
+
+It might be that you will at some point want to run some command directly on the release container or open a terminal session on it.
+
+To start a terminal session on the container you can use:
+```
+    corob_x_docker_image_development $ ./exec.bash /bin/bash
+```
+`./exec.bash` without parameters defaults to /bin/bash, the parameter for exec can be any executable in the path. The startscripts are just added to the path in the container.
+
+
+### Access the code of the controller
+
+The demo controller can be found in the folder: "/opt/workspace/interaction/libraries/robot_remote_control/examples" of the released image.
+
+Now you can access the folder to check the code using a terminal session on the release container or you can use a development environment which allows connections to running containers for example [this one](https://code.visualstudio.com/docs/remote/containers)
+
+The repository in which this example is based is [robot_remote_control](https://github.com/dfki-ric/robot_remote_control). Partners can use the repo as starting point for the develpment of the API on their end.
+
 
 ## Notes:
 
