@@ -49,23 +49,24 @@ The cameras can be accessed via vlc ('media->open network stream': `http://0.0.0
 
 You can find more information about how to connect and process these video streams [here](http://wiki.ros.org/video_stream_opencv)
 
-### Access the code of the controller
+### Accessing the release container with exec.bash
 
-The demo controller can be found in the folder: "/opt/workspace/interaction/libraries/robot_remote_control/examples" of the released image.
+It might be that you will at some point want to run some command directly on the release container or open a terminal session on it.
 
 To start a terminal session on the container you can use:
 ```
     corob_x_docker_image_development $ ./exec.bash /bin/bash
 ```
+`./exec.bash` without parameters defaults to /bin/bash, the parameter for exec can be any executable in the path. The startscripts are just added to the path in the container.
 
-Now you can access the folder to check the code using the terminal
-```
-    corob_x_docker_image_development $ ./exec.bash /bin/bash
-```
 
-Or you can use a development environment which allows connections to running containers for example [this one](https://code.visualstudio.com/docs/remote/containers)
+### Access the code of the controller
 
-The repository in which this example is based is [robot_remote_control](https://github.com/dfki-ric/robot_remote_control) you can use the repo as starting point for the develpment of the API on your end.
+The demo controller can be found in the folder: "/opt/workspace/interaction/libraries/robot_remote_control/examples" of the released image.
+
+Now you can access the folder to check the code using a terminal session on the release container or you can use a development environment which allows connections to running containers for example [this one](https://code.visualstudio.com/docs/remote/containers)
+
+The repository in which this example is based is [robot_remote_control](https://github.com/dfki-ric/robot_remote_control). Partners can use the repo as starting point for the develpment of the API on their end.
 
 
 ## Notes:
