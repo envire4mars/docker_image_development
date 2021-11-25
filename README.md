@@ -43,7 +43,11 @@ If things starts fine, then the simulated robot should reach this position after
 
 ![](/doc/figures/sherpaControlled.png)
 
+### Access the camera streams
+
 The cameras can be accessed via vlc ('media->open network stream': `http://0.0.0.0:57781/video.mjpg` to `http://0.0.0.0:57784/video.mjpg`).
+
+You can find more information about how to connect and process these video streams [here](http://wiki.ros.org/video_stream_opencv)
 
 ### Access the code of the controller
 
@@ -60,6 +64,8 @@ Now you can access the folder to check the code using the terminal
 ```
 
 Or you can use a development environment which allows connections to running containers for example [this one](https://code.visualstudio.com/docs/remote/containers)
+
+The repository in which this example is based is [robot_remote_control](https://github.com/dfki-ric/robot_remote_control) you can use the repo as starting point for the develpment of the API on your end.
 
 
 ## Notes:
