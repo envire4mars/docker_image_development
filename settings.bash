@@ -47,9 +47,9 @@ export WORKSPACE_RELEASE_IMAGE=corob-x/consortium/docker_image_development/${PRO
 # --dns-search=mydomain
 # --net=host
 # --privileged
-# -v /dev/input/:/dev/input
+# -v /dev/input/:/dev/input 
 # -v $HOME/.Xauthority:/home/devel/.Xauthority #mount the .Xauthority file, if the GUI shall be forwarded through ssh Xforwarding
-export ADDITIONAL_DOCKER_RUN_ARGS="--net=host"
+export ADDITIONAL_DOCKER_RUN_ARGS="--net=host -v /dev:/dev --privileged"
 
 # Make the exec script to talk more for debugging/docker setup purposes.
 # This may also be stated in the command line: $> VERBOSE=true ./exec.bash 
