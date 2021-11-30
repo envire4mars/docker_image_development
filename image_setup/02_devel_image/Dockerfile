@@ -21,6 +21,9 @@ ENV SHELL="/bin/bash"
 ADD setup_workspace.bash /opt/setup_workspace.bash
 RUN chmod 755 /opt/setup_workspace.bash
 
+# add devel user to dialout
+RUN adduser devel dialout
+
 # add the dependency list to the image
 ADD workspace_os_dependencies.txt /opt/installed_workspace_os_dependencies.txt
 # install dependencies from the list

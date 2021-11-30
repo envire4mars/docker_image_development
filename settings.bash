@@ -23,8 +23,8 @@ export DOCKER_REGISTRY_AUTOPULL=false
 export DEFAULT_EXECMODE="release" # use the release as default
 
 ### The base image used when building a workspace image (one of the ones build in base_images)
-export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with rock core dependencies installed
-# export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_20.04:base # image with rock core dependencies installed
+#export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with rock core dependencies installed
+export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_20.04:base # image with rock core dependencies installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/ros_melodic_18.04:base # image with basic ros melodic installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/ros_noetic_20.04:base # image with basic ros noetic installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/plain_18.04:base # plain image with build_essentials installed
@@ -49,7 +49,7 @@ export WORKSPACE_RELEASE_IMAGE=corob-x/consortium/docker_image_development/${PRO
 # --privileged
 # -v /dev/input/:/dev/input 
 # -v $HOME/.Xauthority:/home/devel/.Xauthority #mount the .Xauthority file, if the GUI shall be forwarded through ssh Xforwarding
-export ADDITIONAL_DOCKER_RUN_ARGS="--net=host -v /dev:/dev --privileged"
+export ADDITIONAL_DOCKER_RUN_ARGS="--net=host -v /dev:/dev --privileged --dns-search=dfki.uni-bremen.de"
 
 # Make the exec script to talk more for debugging/docker setup purposes.
 # This may also be stated in the command line: $> VERBOSE=true ./exec.bash 
