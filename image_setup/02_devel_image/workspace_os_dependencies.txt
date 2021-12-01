@@ -41,11 +41,9 @@ autoconf
  libpcl-dev 
  libpoco-dev 
  libprotobuf-dev 
- libqglviewer-dev-qt4 
  libqt4-dev 
  libqt4-opengl-dev 
  libqtwebkit-dev 
- libqwt5-qt4-dev 
  libsdformat6-dev 
  libsigc++-2.0-0v5 
  libsigc++-2.0-dev 
@@ -74,6 +72,8 @@ autoconf
  qt4-designer 
  qt4-qmake 
  rake 
- ruby-thor 
+ ruby
+ ruby-dev
+ ruby-thor
  zlib1g-dev
 

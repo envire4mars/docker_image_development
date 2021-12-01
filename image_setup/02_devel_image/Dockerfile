@@ -5,6 +5,9 @@ FROM ${BASE_IMAGE_NAME}
 # To avoid some errors when fetching apt-get updates. # See: https://stackoverflow.com/a/35976127 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get update && apt-get install -y \
+    keyboard-configuration
+
 # generic packages to install non-workspace dependencies ( those are added later )
 RUN apt-get update && apt-get install -y \
     bash-completion \
