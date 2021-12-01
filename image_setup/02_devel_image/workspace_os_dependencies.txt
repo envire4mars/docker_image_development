@@ -71,7 +71,8 @@ autoconf
  python3-yaml 
  qt4-designer 
  qt4-qmake 
- rake 
+ rake
+ rake-compiler
  ruby
  ruby-dev
  ruby-thor
