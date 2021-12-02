@@ -16,7 +16,7 @@ DEB_USE: false
 debian_release: master-20.06
 ROCK_SELECTED_FLAVOR: master
 DEB_AUTOMATIC: true
-NDLCOM_ROBOTCONFIG: CommonConfig
+NDLCOM_ROBOTCONFIG: SherpaTTConfig
 ROCK_BRANCH: master
 USE_PYTHON: true
 python_executable: "/usr/bin/python3"
