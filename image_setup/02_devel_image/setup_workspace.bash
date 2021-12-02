@@ -27,7 +27,7 @@ if [ ! -f /opt/workspace/env.sh ]; then
 
     # setup ws using autoproj
     wget rock-robotics.org/autoproj_bootstrap
-    ruby autoproj_bootstrap git $BUILDCONF branch=$BRANCH
+    ruby autoproj_bootstrap git $BUILDCONF branch=$BRANCH --seed-config=corobx_seed_config.yml
     source env.sh
     aup
     amake
