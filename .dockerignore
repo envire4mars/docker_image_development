@@ -35,6 +35,10 @@ workspace/**
 !workspace/tools/pocolog
 !workspace/gui/vizkit
 
+# keep robot_remote_control library folder
+# (examples are compiled but not installed)
+# is opensource anyway, so keep whole folder
+!/opt/workspace/interaction/libraries/robot_remote_control/**
 
 # binaries
 !workspace/install/** 
