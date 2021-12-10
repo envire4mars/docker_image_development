@@ -62,4 +62,4 @@ export ADDITIONAL_DOCKER_RUN_ARGS="--net=host -v /dev:/dev --privileged --dns-se
 # and mounted to /ccache, this way multiple workspaces in docker_image_development
 # can share a single ccache, CCACHE_DIR is automatically set in the env, just install
 # and enable ccache for your builds
-# export MOUNT_CCACHE_VOLUME=true
+export MOUNT_CCACHE_VOLUME=true
