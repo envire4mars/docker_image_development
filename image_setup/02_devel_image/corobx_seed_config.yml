@@ -24,7 +24,9 @@ USE_OCL: false
 rtt_target: gnulinux
 rtt_corba_implementation: omniorb
 ccache: true
-iceCC: true
+ccacheDir: "/ccache"
+ccacheSize: 10G
+iceCC: false
 iceCC_parallel: '15'
 GITLAB: http
 GITLAB_ROOT: https://gitlab.com
