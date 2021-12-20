@@ -31,7 +31,7 @@ it might be necessary to stop the docker container (`./stop.bash`) and start fro
 
 If everything starts fine, the simulation should look like this:
 
-![](/doc/figures/simulationStarts.png)
+![](/doc/figures/MARS_simulation_start.png)
 
 ### Start a demo controller
 
@@ -41,7 +41,8 @@ Once the simulation is running, to start a controller that will connect to the r
 
 If things starts fine, then the simulated robot should reach this position after a while (and continue moving):
 
-![](/doc/figures/sherpaControlled.png)
+![](/doc/figures/MARS_simulation_rrc.png)
+MARS_simulation_rrc
 
 ### Access the camera streams
 
