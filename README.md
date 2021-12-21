@@ -42,7 +42,6 @@ Once the simulation is running, to start a controller that will connect to the r
 If things starts fine, then the simulated robot should reach this position after a while (and continue moving):
 
 ![](/doc/figures/MARS_simulation_rrc.png)
-MARS_simulation_rrc
 
 ### Access the camera streams
 
