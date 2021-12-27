@@ -30,6 +30,7 @@ if [ ! -f /opt/workspace/env.sh ]; then
     ruby autoproj_bootstrap git $BUILDCONF branch=$BRANCH --seed-config=/opt/corobx_seed_config.yml
     source env.sh
     aup
+    export ROCK_BUNDLE="/opt/workspace/bundles/sherpa_tt_corobx"
     amake
 
     echo -e "\e[32m[INFO] workspace successfully initialized.\e[0m"
