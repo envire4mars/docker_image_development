@@ -1,6 +1,11 @@
 #!/bin/bash
 
 BUNDLE=sherpa_tt_corobx
+#BUNDLE=coyote3_launch
+if [ "$1" ]; then
+   BUNDLE="$1"
+fi
+echo "Using bundle: $BUNDLE"
 
 source /opt/workspace/env.sh
 echo "Restarting omniorb nameserver"

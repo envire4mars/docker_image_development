@@ -35,6 +35,7 @@ autoconf
  libjpeg-dev 
  libjsoncpp-dev 
  liblapack-dev 
+ libminizip-dev 
  libomniorb4-dev 
  libopencv-dev 
  libopenscenegraph-dev 
@@ -71,10 +72,6 @@ autoconf
  python3-yaml 
  qt4-designer 
  qt4-qmake 
- rake
- rake-compiler
- ruby
- ruby-dev
+ rake 
  ruby-thor
- zlib1g-dev
 
