@@ -6,7 +6,8 @@ _exec_bash(){
     cur=${COMP_WORDS[COMP_CWORD]}
 
     if [ "${COMP_WORDS[1]}" = "00_start_rock_runtime.bash" ] || 
-       [ "${COMP_WORDS[1]}" = "01_start_simulation.bash" ]; then
+       [ "${COMP_WORDS[1]}" = "01_start_simulation.bash" ] ||
+       [ "${COMP_WORDS[1]}" = "start_simulation.bash" ]; then
         # nothing comes after release
         if [ "${#COMP_WORDS[@]}" -gt "4" ]; then
             return
