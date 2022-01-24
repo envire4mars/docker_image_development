@@ -3,6 +3,7 @@ workspace/autoproj
 workspace/autoproj_bootstrap
 workspace/base
 workspace/control
+workspace/coyote3
 workspace/drivers
 workspace/envire
 workspace/external
@@ -17,6 +18,7 @@ workspace/slam
 !workspace/base/scripts/bin
 !workspace/base/scripts/lib
 !workspace/base/scripts/shell
+!workspace/interaction/libraries/robot_remote_control
 !workspace/models
 !workspace/tools
 workspace/tools/cnd

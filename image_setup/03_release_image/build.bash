@@ -18,13 +18,13 @@ export TAG=$(date +%Y_%m_%d-%H_%M)
 export HOST=$(hostname)
 export DEVEL_IMAGE_NAME=${DEVEL_REGISTRY:+${DEVEL_REGISTRY}/}$WORKSPACE_DEVEL_IMAGE
 
-echo "Append .dockerignor.extend to root .dockerignore file"
+echo "Append .dockerignore.extend to root .dockerignore file"
 FROM=$(expr $(cat ../../.dockerignore | wc -l) + 1)
 cat .dockerignore.extend >> ../../.dockerignore
 TO=$(cat ../../.dockerignore | wc -l)
 
 RELEASE_IMAGE_NAME=${RELEASE_REGISTRY:+${RELEASE_REGISTRY}/}$WORKSPACE_RELEASE_IMAGE
-echo "Buidling release image: ${RELEASE_IMAGE_NAME}_$TAG by $USER on $HOST Date: $DATE"
+echo "Building release image: ${RELEASE_IMAGE_NAME}_$TAG by $USER on $HOST Date: $DATE"
 
 # tag the docker development repo with the release date
 git tag -a release_$TAG -m"${RELEASE_IMAGE_NAME}_$TAG"
