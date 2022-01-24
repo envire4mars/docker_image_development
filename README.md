@@ -1,3 +1,8 @@
+# Contents
+
+0. [Quickstart of the Corob-X simulator](./README.md#quickstart-of-the-corob-x-simulator)
+0. [About Docker Image Development](./README.md#docker-image-development)
+
 # Quickstart of the Corob-X simulator
 
 ## Create access token to be able to load docker images:
@@ -30,7 +35,7 @@ Open a new terminal, go to the folder where you cloned the repo, and run these t
 
     $ cd corob_x_docker_image_development
     corob_x_docker_image_development $ source autocomplete.me
-    corob_x_docker_image_development $ ./exec.bash start_simulation.bash <robot>
+    corob_x_docker_image_development $ ./exec.bash start_simulation.bash [sherpa_tt|coyote3|luvmi]
 
 To stop the simulation just press 'q' in the terminal. If something goes wrong
 it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
