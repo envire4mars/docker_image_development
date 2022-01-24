@@ -8,23 +8,29 @@
 - check read/write registry
 - copy your token
 
-$ docker login git.hb.dfki.de:5050 -u USER -p TOKEN
+`docker login git.hb.dfki.de:5050 -u USER -p TOKEN`
 
 ## Clone this repository 
 
-First clone this repo if you haven't done it yet. Open a terminal and run this command to do so.
+First clone this repo, if you haven't done it yet. Open a terminal and run this command to do so.
 
     $ git clone https://git.hb.dfki.de/corob-x/consortium/docker_image_development.git corob_x_docker_image_development
+
+## Update image
+
+If you have already cloned the repository and just want to update the docker image execute:
+
+`bash tools/update_image.bash release`
 
 ## Startscripts for CoRob-X
 
 ### Start the simulation
 
-Open a new terminal, go to the folder where you cloned the repo, and run these two commands.
+Open a new terminal, go to the folder where you cloned the repo, and run these two commands. By default the sherpa simulation is launched. You can pass an argument to the start_simulation.bash script (use tab completion to see available commands).
 
     $ cd corob_x_docker_image_development
     corob_x_docker_image_development $ source autocomplete.me
-    corob_x_docker_image_development $ ./exec.bash start_sherpa_sim.bash
+    corob_x_docker_image_development $ ./exec.bash start_simulation.bash <robot>
 
 To stop the simulation just press 'q' in the terminal. If something goes wrong
 it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
@@ -35,11 +41,11 @@ If everything starts fine, the simulation should look like this:
 
 ### Start a demo controller
 
-Once the simulation is running, to start a controller that will connect to the running simulation and move the robot. This has to be done in a new terminal:
+Once the simulation is running, to start a controller that will connect to the running simulation and move the robot. This has to be done in a new terminal and works with sherpa_tt and coyot3:
 
-    corob_x_docker_image_development $ ./exec.bash execute_sherpa_controller_demo.bash
+    corob_x_docker_image_development $ ./exec.bash api_controller_demo.bash
 
-If things starts fine, then the simulated robot should reach this position after a while (and continue moving):
+If things starts fine, then the simulated robot should start moving and provide telemetry data:
 
 ![](/doc/figures/MARS_simulation_rrc.png)
 
@@ -55,7 +61,7 @@ It might be that you will at some point want to run some command directly on the
 
 To start a terminal session on the container you can use:
 ```
-    corob_x_docker_image_development $ ./exec.bash /bin/bash
+    corob_x_docker_image_development $ ./exec.bash
 ```
 `./exec.bash` without parameters defaults to /bin/bash, the parameter for exec can be any executable in the path. The startscripts are just added to the path in the container.
 
