@@ -1,7 +1,39 @@
 #!/bin/bash
 
+_exec_bash(){
+    local cur prev words cword package
+
+    cur=${COMP_WORDS[COMP_CWORD]}
+
+    if [ "${COMP_WORDS[1]}" = "00_start_rock_runtime.bash" ] || 
+       [ "${COMP_WORDS[1]}" = "01_start_simulation.bash" ]; then
+        # nothing comes after release
+        if [ "${#COMP_WORDS[@]}" -gt "4" ]; then
+            return
+        fi
+        if [ "${#COMP_WORDS[@]}" -gt "3" ]; then
+            COMPREPLY=($(compgen -W "$(ls startscripts | xargs) /bin/bash" -- "$cur"))
+            return
+        fi
+        # omit the first line
+        COMPREPLY=($(compgen -W "coyote3 sherpa_tt" -- "$cur"))
+        return
+    fi
+
+    if [ "${#COMP_WORDS[@]}" -gt "2" ]; then
+        COMPREPLY=($(compgen -W "$(ls startscripts | xargs) /bin/bash /opt/write_osdeps.bash" -- "$cur"))
+        return
+    fi
+
+    COMPREPLY=($(compgen -W "base devel release $(ls startscripts | xargs) /bin/bash write_osdeps" -- "$cur"))
+    
+}
+
 ROOT_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export PATH=$ROOT_DIR${PATH:+:${PATH}}
-complete -W "base devel release $(ls startscripts | xargs) /bin/bash /opt/write_osdeps.bash" ./exec.bash
+complete -F _exec_bash ./exec.bash
+complete -F _exec_bash exec.bash
 complete -W "base devel release" ./stop.bash
+complete -W "base devel release" stop.bash
 complete -W "base devel release" ./delete_container.bash
+complete -W "base devel release" delete_container.bash
