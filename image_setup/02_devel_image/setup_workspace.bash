@@ -6,7 +6,7 @@
 set -e
 
 BUILDCONF=https://git.hb.dfki.de/corob-x/buildconf.git
-BRANCH=devel
+BRANCH=master
 
 # In this file you can add a script that intitializes your workspace
 
