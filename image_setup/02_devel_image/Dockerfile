@@ -21,12 +21,9 @@ RUN apt-get update && apt-get install -y \
 ENV SHELL="/bin/bash"
 
 # add workspace init to container initialization
-ADD corobx_seed_config.yml /opt/corobx_seed_config.yml
+#ADD corobx_seed_config.yml /opt/corobx_seed_config.yml
 ADD setup_workspace.bash /opt/setup_workspace.bash
 RUN chmod 755 /opt/setup_workspace.bash
-
-# add devel user to dialout
-RUN adduser devel dialout
 
 # add the dependency list to the image
 ADD workspace_os_dependencies.txt /opt/installed_workspace_os_dependencies.txt
@@ -42,10 +39,3 @@ RUN echo '$PRINT_INFO' >> /opt/init_workspace.bash
 # If you want to run the setup automatically, you can add it directly to the script
 # it is executed every time the container is re-created
 RUN echo "/opt/setup_workspace.bash" >> /opt/init_workspace.bash
-
-
-
-
-
-
-
