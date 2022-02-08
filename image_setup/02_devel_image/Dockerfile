@@ -21,14 +21,13 @@ RUN apt-get update && apt-get install -y \
 ENV SHELL="/bin/bash"
 
 # add workspace init to container initialization
-#ADD corobx_seed_config.yml /opt/corobx_seed_config.yml
 ADD setup_workspace.bash /opt/setup_workspace.bash
 RUN chmod 755 /opt/setup_workspace.bash
 
 # add the dependency list to the image
 ADD workspace_os_dependencies.txt /opt/installed_workspace_os_dependencies.txt
 # install dependencies from the list
-RUN grep -vE '^#' /opt/installed_workspace_os_dependencies.txt | xargs sudo apt install -y
+RUN grep -vE '^#' /opt/installed_workspace_os_dependencies.txt | xargs apt install -y
 
 # opt/init_workspace.bash is run once via dockercommands.bash by calling check_init_workspace.bash
 # $PRINT_INFO is set later by the docker run command in docker_commands.bash

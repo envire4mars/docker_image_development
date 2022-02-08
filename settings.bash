@@ -23,7 +23,7 @@ export DOCKER_REGISTRY_AUTOPULL=false
 export DEFAULT_EXECMODE="release" # use the release as default
 
 ### The base image used when building a workspace image (one of the ones build in base_images)
-#export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with rock core dependencies installed
+# export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with rock core dependencies installed
 export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_20.04:base # image with rock core dependencies installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/ros_melodic_18.04:base # image with basic ros melodic installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/ros_noetic_20.04:base # image with basic ros noetic installed
@@ -38,6 +38,7 @@ export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_20.04:base # image with
 export WORKSPACE_DEVEL_IMAGE=developmentimage/${PROJECT_NAME}:devel
 #export WORKSPACE_RELEASE_IMAGE=developmentimage/${PROJECT_NAME}:release
 export WORKSPACE_RELEASE_IMAGE=corob-x/consortium/docker_image_development/${PROJECT_NAME}:release
+export WORKSPACE_CD_IMAGE=developmentimage/${PROJECT_NAME}:CD
 
 # In case your docker container needs special run paramaters
 # like open ports, additional mounts etc.
