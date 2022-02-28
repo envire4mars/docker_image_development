@@ -6,7 +6,7 @@
 set -e
 
 BUILDCONF=https://git.hb.dfki.de/corob-x/buildconf.git
-BRANCH=devel
+BRANCH=master
 WORKSPACE_DIR=/opt/workspace
 
 if [ ! $1 = "" ]; then
