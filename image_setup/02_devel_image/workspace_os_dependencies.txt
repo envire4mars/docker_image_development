@@ -11,6 +11,7 @@ autoconf
  freeglut3-dev 
  graphviz 
  graphviz-dev 
+ libassimp-dev 
  libavahi-client-dev 
  libavahi-client3 
  libavahi-core-dev 
@@ -24,6 +25,7 @@ autoconf
  libboost-serialization-dev 
  libboost-system-dev 
  libboost-thread-dev 
+ libccd-dev 
  libcgal-dev 
  libdw-dev 
  libeigen3-dev 
@@ -31,20 +33,27 @@ autoconf
  libfreetype6-dev 
  libgdal-dev 
  libgoogle-glog-dev 
+ libgstreamer-plugins-base1.0-dev 
+ libgstreamer-plugins-good1.0-0 
+ libgstreamer1.0-dev 
  libharfbuzz-dev 
  libjpeg-dev 
  libjsoncpp-dev 
  liblapack-dev 
  libminizip-dev 
+ libnlopt-cxx-dev 
+ libode-dev 
  libomniorb4-dev 
  libopencv-dev 
  libopenscenegraph-dev 
  libpcl-dev 
  libpoco-dev 
  libprotobuf-dev 
+ libqglviewer-dev-qt5 
  libqt4-dev 
  libqt4-opengl-dev 
  libqtwebkit-dev 
+ libreadline-dev 
  libsdformat6-dev 
  libsigc++-2.0-0v5 
  libsigc++-2.0-dev 
