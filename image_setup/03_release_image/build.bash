@@ -23,10 +23,10 @@ export TAG=$(date +%Y_%m_%d-%H_%M)
 export HOST=$(hostname)
 export DEVEL_IMAGE_NAME=${DEVEL_REGISTRY:+${DEVEL_REGISTRY}/}$WORKSPACE_DEVEL_IMAGE
 
-echo "Append .dockerignore.extend to root .dockerignore file"
-FROM=$(expr $(cat ../../.dockerignore | wc -l) + 1)
-cat .dockerignore.extend >> ../../.dockerignore
-TO=$(cat ../../.dockerignore | wc -l)
+# echo "Append .dockerignore.extend to root .dockerignore file"
+# FROM=$(expr $(cat ../../.dockerignore | wc -l) + 1)
+# cat .dockerignore.extend >> ../../.dockerignore
+# TO=$(cat ../../.dockerignore | wc -l)
 
 RELEASE_IMAGE_NAME=${RELEASE_REGISTRY:+${RELEASE_REGISTRY}/}$WORKSPACE_RELEASE_IMAGE
 echo "Building release image: ${RELEASE_IMAGE_NAME}_$TAG by $USER on $HOST Date: $DATE"
@@ -41,8 +41,8 @@ docker build --no-cache --build-arg DEVEL_IMAGE_NAME --build-arg USER --build-ar
 echo "tagging $RELEASE_IMAGE_NAME as ${RELEASE_IMAGE_NAME}_$TAG"
 docker tag $RELEASE_IMAGE_NAME ${RELEASE_IMAGE_NAME}_$TAG
 
-sed -i "${FROM},${TO}d" ../../.dockerignore
-echo "Restored original content of .dockerignore file"
+# sed -i "${FROM},${TO}d" ../../.dockerignore
+# echo "Restored original content of .dockerignore file"
 
 echo
 echo "don't forget to push or store the image, if you wish:"
