@@ -35,7 +35,7 @@ Open a new terminal, go to the folder where you cloned the repo, and run these t
 
     $ cd corob_x_docker_image_development
     corob_x_docker_image_development $ source autocomplete.me
-    corob_x_docker_image_development $ ./exec.bash start_simulation.bash [sherpa_tt|coyote3|luvmi]
+    corob_x_docker_image_development $ ./exec.bash start_simulation.bash [sherpa_tt|coyote3|luvmi] [moon|maguez]
 
 To stop the simulation just press 'q' in the terminal. If something goes wrong
 it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
@@ -43,6 +43,15 @@ it might be necessary to stop the docker container (`./stop.bash`) and start fro
 If everything starts fine, the simulation should look like this:
 
 ![](/doc/figures/MARS_simulation_start.png)
+
+### Debug using the command line interface
+
+Execute `robot_controller`, which automatically connects to port 7001/7002 within the docker:
+
+    $ cd corob_x_docker_image_development
+    corob_x_docker_image_development $ ./exec.bash robot_controller.bash
+
+Press `tab` or execute `help` to see available commands. Execute getters like `getCurrentPose` to request data once or use the watch_ prefix to continuously subscribe to telemetry, e.g. `watch_getPointCloud`. You may also send twist commands, e.g. to stop the robot `setTwistCommand 0 0 0 0 0 0`
 
 ### Start a demo controller
 

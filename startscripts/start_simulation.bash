@@ -1,9 +1,12 @@
 #!/bin/bash
 
+##################################################################################### CONSTANTS ###
 BUNDLE=sherpa_tt_corobx
-CND=simulation.cnd
+CND=simulation.cnd # moon = default
 LOGDIR=/opt/workspace
 
+
+##################################################################################### FUNCTIONS ###
 # trap ctrl-c and call handle_interupt()
 trap 'handle_interupt' INT
 function handle_interupt() {
@@ -17,14 +20,28 @@ function stop_cnd(){
     killall -SIGINT rock-runtime || true
 }
 
+function eval_args(){
+    if [[ "$1" == "sherpa"* ]]; then
+        BUNDLE="sherpa_tt_corobx"
+    elif [[ "$1" == "coyote"* ]]; then
+        BUNDLE="coyote3_corobx"
+    elif [[ "$1" == "aruco" ]]; then
+        CND="simulation_aruco.cnd"
+    elif [[ "$1" == "moon" ]]; then
+        CND="simulation.cnd"
+    elif [[ "$1" == "maguez" ]]; then
+        CND="simulation_maguez.cnd"
+    else
+       echo "Unknown argument passed: $1"
+       exit
+    fi
+}
 
-if [[ "$1" == "sherpa"* ]]; then
-    BUNDLE="sherpa_tt_corobx"
-elif [[ "$1" == "coyote"* ]]; then
-    BUNDLE="coyote3_corobx"
-else
-   echo "No bundle specified. Using default bundle: $BUNDLE"
-fi
+########################################################################################## MAIN ###
+while ! [ -z "$1" ]; do
+    eval_args $1
+    shift
+done
 
 source /opt/workspace/env.sh
 echo "Restarting omniorb nameserver"
