@@ -31,6 +31,9 @@ function eval_args(){
         CND="simulation.cnd"
     elif [[ "$1" == "maguez" ]]; then
         CND="simulation_maguez.cnd"
+    elif [[ "$1" == "corobx" ]]; then
+        BUNDLE="corobx_simulation"
+        CND="simulation.cnd"
     else
        echo "Unknown argument passed: $1"
        exit
