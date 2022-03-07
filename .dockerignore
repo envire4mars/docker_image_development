@@ -36,6 +36,9 @@ workspace/**
 # but not headers
 workspace/install/include
 
+# allow the omniorb restart script
+!workspace/tools/cnd/orogen/execution/systemd/omniorb_restart.sh
+
 # additiional repos that are not installed into the install folder
 !workspace/models/**
 # bundles but not logs
