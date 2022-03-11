@@ -9,7 +9,7 @@ export DOCKER_REGISTRY=d-reg.hb.dfki.de
 
 # in case you are not using a single registry, you can push images in different ones
 # e.g. store base images on hub.docker.com and others in a local registry
-export BASE_REGISTRY=d-reg.hb.dfki.de
+export BASE_REGISTRY=
 export DEVEL_REGISTRY=$DOCKER_REGISTRY
 export RELEASE_REGISTRY=$DOCKER_REGISTRY
 
@@ -48,12 +48,19 @@ export WORKSPACE_CD_IMAGE=developmentimage/${PROJECT_NAME}:CD
 # --dns-search=mydomain
 # --net=host
 # --privileged
-# -v /dev/input/:/dev/input
-export ADDITIONAL_DOCKER_RUN_ARGS=" --net=host  --privileged  --dns-search=dfki.uni-bremen.de"
+# -v /dev/input/:/dev/input 
+# -v $HOME/.Xauthority:/home/devel/.Xauthority #mount the .Xauthority file, if the GUI shall be forwarded through ssh Xforwarding
+export ADDITIONAL_DOCKER_RUN_ARGS="--net=host -v /dev:/dev --privileged --dns-search=dfki.uni-bremen.de"
 
 # Make the exec script to talk more for debugging/docker setup purposes.
 # This may also be stated in the command line: $> VERBOSE=true ./exec.bash 
 # export VERBOSE=true
 
 # Make the output as quiet as possible (does not apply to programs started in the container)
-#export SILENT=false
+# export SILENT=false
+
+# mount ccache volume, if enabled, a volume name based on the base image name is generated
+# and mounted to /ccache, this way multiple workspaces in docker_image_development
+# can share a single ccache, CCACHE_DIR is automatically set in the env, just install
+# and enable ccache for your builds
+export MOUNT_CCACHE_VOLUME=true

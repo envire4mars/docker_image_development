@@ -23,6 +23,17 @@ _exec_bash(){
         return
     fi
 
+    if [ "${COMP_WORDS[1]}" = "00_start_rock_runtime.bash" ] || 
+       [ "${COMP_WORDS[1]}" = "01_start_simulation.bash" ]   ||
+       [ "${COMP_WORDS[1]}" = "start_simulation.bash" ]      ||
+       [ "${COMP_WORDS[2]}" = "00_start_rock_runtime.bash" ] || 
+       [ "${COMP_WORDS[2]}" = "01_start_simulation.bash" ]   ||
+       [ "${COMP_WORDS[2]}" = "start_simulation.bash" ]; then
+        # omit the first line
+        COMPREPLY=($(compgen -W "coyote3 sherpa_tt aruco moon maguez corobx" -- "$cur"))
+        return
+    fi
+
     if [ "${#COMP_WORDS[@]}" -gt "2" ]; then
         COMPREPLY=($(compgen -W "$(ls startscripts | xargs) /bin/bash /opt/write_osdeps.bash" -- "$cur"))
         return

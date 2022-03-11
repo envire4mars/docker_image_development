@@ -23,4 +23,20 @@ You can activate autocompletion hints for `./exec.bash` scripts arguments by run
     $ source autocomplete.me
     $ ./exec.bash [double-tap tab key]
 
+## Startscripts for CoRob-X:
+
+Run the simulation setup:
+
+    $ ./exec.bash 03_start_sim2.bash
+
+To stop the simulation just press 'q' in the terminal. If something goes wrong
+it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
+
+Once the simulation is running, one can start a control example via:
+
+    $ ./exec.bash 02_execute_controller_demo
+
+The cameras can be accessed via vlc ('media->open network stream': `http://0.0.0.0:57781/video.mjpg` to `http://0.0.0.0:57784/video.mjpg`).
+
+The demo controller can be found in the archive: "workspace/interaction/libraries/robot_remote_control/examples".
 

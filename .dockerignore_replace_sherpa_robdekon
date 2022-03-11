@@ -1,0 +1,49 @@
+home/.ssh/
+home/.ddd/
+
+#exclude location of exported images
+image_setup/04_save_release/
+
+#vscode remopte-container plugin
+home/.vscode-server/
+home/.cache/vscode-cpptools/
+
+#ros specifics
+home/.ignition/
+home/.ros/
+home/.rviz/
+
+
+# Ignore everything in workspace
+workspace/**
+
+# allow from workspace
+# autoproj env
+!workspace/autoproj/**
+!workspace/.autoproj/**
+!workspace/env.sh
+!workspace/.bundle_env.sh
+!workspace/base/scripts/**
+
+# autoproj ruby subsystem
+!workspace/tools/roby
+!workspace/tools/utilrb
+!workspace/tools/metaruby
+!workspace/tools/orocos.rb
+
+# vizkit subsystem
+!workspace/tools/orogen
+!workspace/tools/pocolog
+!workspace/gui/vizkit
+
+
+# binaries
+!workspace/install/** 
+# but not include
+workspace/install/include
+
+# additiional repos that are not installed into the install folder
+!workspace/models/**
+# bundles but not logs
+!workspace/bundles/**
+workspace/bundles/sherpa_tt_robdekon/logs

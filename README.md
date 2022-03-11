@@ -1,3 +1,100 @@
+# Contents
+
+0. [Quickstart of the Corob-X simulator](./README.md#quickstart-of-the-corob-x-simulator)
+0. [About Docker Image Development](./README.md#docker-image-development)
+
+# Quickstart of the Corob-X simulator
+
+## Create access token to be able to load docker images:
+
+- edit profile
+- acess tokens
+- select a name
+- check read/write registry
+- copy your token
+
+`docker login git.hb.dfki.de:5050 -u USER -p TOKEN`
+
+## Clone this repository 
+
+First clone this repo, if you haven't done it yet. Open a terminal and run this command to do so.
+
+    $ git clone https://git.hb.dfki.de/corob-x/consortium/docker_image_development.git corob_x_docker_image_development
+
+## Update image
+
+If you have already cloned the repository and just want to update the docker image execute:
+
+`bash tools/update_image.bash release`
+
+## Startscripts for CoRob-X
+
+### Start the simulation
+
+Open a new terminal, go to the folder where you cloned the repo, and run these two commands. By default the sherpa simulation is launched. You can pass an argument to the start_simulation.bash script (use tab completion to see available commands).
+
+    $ cd corob_x_docker_image_development
+    corob_x_docker_image_development $ source autocomplete.me
+    corob_x_docker_image_development $ ./exec.bash start_simulation.bash [sherpa_tt|coyote3|luvmi] [moon|maguez]
+
+To stop the simulation just press 'q' in the terminal. If something goes wrong
+it might be necessary to stop the docker container (`./stop.bash`) and start from scratch.
+
+If everything starts fine, the simulation should look like this:
+
+![](/doc/figures/MARS_simulation_start.png)
+
+### Debug using the command line interface
+
+Execute `robot_controller`, which automatically connects to port 7001/7002 within the docker:
+
+    $ cd corob_x_docker_image_development
+    corob_x_docker_image_development $ ./exec.bash robot_controller.bash
+
+Press `tab` or execute `help` to see available commands. Execute getters like `getCurrentPose` to request data once or use the watch_ prefix to continuously subscribe to telemetry, e.g. `watch_getPointCloud`. You may also send twist commands, e.g. to stop the robot `setTwistCommand 0 0 0 0 0 0`
+
+### Start a demo controller
+
+Once the simulation is running, to start a controller that will connect to the running simulation and move the robot. This has to be done in a new terminal and works with sherpa_tt and coyot3:
+
+    corob_x_docker_image_development $ ./exec.bash api_controller_demo.bash
+
+If things starts fine, then the simulated robot should start moving and provide telemetry data:
+
+![](/doc/figures/MARS_simulation_rrc.png)
+
+### Access the camera streams
+
+The cameras can be accessed via vlc ('media->open network stream': `http://0.0.0.0:57781/video.mjpg` to `http://0.0.0.0:57784/video.mjpg`).
+
+You can find more information about how to connect and process these video streams [here](http://wiki.ros.org/video_stream_opencv)
+
+### Accessing the release container with exec.bash
+
+It might be that you will at some point want to run some command directly on the release container or open a terminal session on it.
+
+To start a terminal session on the container you can use:
+```
+    corob_x_docker_image_development $ ./exec.bash
+```
+`./exec.bash` without parameters defaults to /bin/bash, the parameter for exec can be any executable in the path. The startscripts are just added to the path in the container.
+
+
+### Access the code of the controller
+
+The demo controller can be found in the folder: "/opt/workspace/interaction/libraries/robot_remote_control/examples" of the released image.
+
+Now you can access the folder to check the code using a terminal session on the release container or you can use a development environment which allows connections to running containers for example [this one](https://code.visualstudio.com/docs/remote/containers)
+
+The repository in which this example is based is [robot_remote_control](https://github.com/dfki-ric/robot_remote_control). Partners can use the repo as starting point for the develpment of the API on their end.
+
+
+## Notes:
+
+  If there are problems with processes that are not shut down correctly after stopping the simulation, it is recommended to stop the docker container before restarting the application:
+
+  $ ./stop.bash
+
 # Docker Image Development 
 
 This is a collection of scripts that enables a development process using docker images.

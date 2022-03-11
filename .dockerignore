@@ -12,6 +12,7 @@
 
 home/.ssh/
 home/.ddd/
+*.log
 
 # exclude location of exported images
 image_setup/04_save_release/
@@ -19,3 +20,42 @@ image_setup/04_save_release/
 # vscode remote-container plugin
 home/.vscode-server/
 home/.cache/vscode-cpptools/
+
+# Ignore everything in workspace
+workspace/**
+
+# allow from workspace
+# autoproj env
+!workspace/autoproj/**
+!workspace/.autoproj/**
+!workspace/env.sh
+!workspace/.bundle_env.sh
+!workspace/base/scripts/**
+
+# autoproj ruby subsystem
+!workspace/tools/roby
+!workspace/tools/utilrb
+!workspace/tools/metaruby
+!workspace/tools/orocos.rb
+
+# vizkit subsystem
+!workspace/tools/orogen
+!workspace/tools/pocolog
+!workspace/gui/vizkit
+
+# include binaries
+!workspace/install/** 
+# but not headers
+workspace/install/include
+
+# allow the omniorb restart script
+!workspace/tools/cnd/orogen/execution/systemd/omniorb_restart.sh
+
+# additiional repos that are not installed into the install folder
+!workspace/models/**
+# bundles but not logs
+!workspace/bundles/**
+workspace/bundles/**/logs/**
+
+# git folders
+**/.git
