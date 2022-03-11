@@ -92,19 +92,22 @@ In this case, and if your host uses the "systemd-resolvd" (ubutnu > 18.04) you c
 #### Install dnsmasq
 
 * sudo apt install dnsmasq
-* edit /etc/dnsmasq.conf
-  * add:
- ```
-    interface=docker0
-    listen-address=172.17.0.1
-    cache-size=0
- ```
+* add the following content in the /etc/dnsmasq.d/docker.conf file
+  ```
+  interface=docker0
+  bind-dynamic
+  listen-address=172.17.0.1
+  cache-size=0
+  no-dhcp-interface=docker0
+  ```
   * setting the cache size is important, as dnsmasq should only forward to systemd-resolvd
     * otherwise you'll have to restart dnsmasq after switching networks
+* delete /etc/dnsmasq.d/ubuntu-fan as it sets bind-interfaces which is incompatible with bind-dynamic
 * restart dnsmasq
   * sudo systemctl restart dnsmasq
 * start dnsmasq on boot
   * sudo systemctl enable dnsmasq
+
 
 #### provide dns setting to docker
 
@@ -121,7 +124,7 @@ As this DNS though dnsmasq and systemd-resolvd ist host-specific, you shouldn't 
 * restart docker
   * sudo systemctl restart docker
 
-**For these changes to take effect, you have to re-create your containers** (just delete the *\_image\_id.txt files)
+**For these changes to take effect, you have to re-create your containers** (just call the delete_container.bash script)
 
 
 ### Restart and convenience 

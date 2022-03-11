@@ -19,12 +19,13 @@ export DOCKER_REGISTRY_AUTOPULL=false
 ### The default release mode to use if no mode paramater is given to ./exec.bash or ./stop.bash
 ### The checked in version should reflect the image status and be the highest availale image (base - devel - release)
 export DEFAULT_EXECMODE="base" # Use this only for setting up the initial devel image (modify setup_workspace.bash)
-# export DEFAULT_EXECMODE="devel" # This is used while deveoping code and preparing a relase
-# export DEFAULT_EXECMODE="release" # use the release as default
+#export DEFAULT_EXECMODE="devel" # This is used while deveoping code and preparing a relase
+#export DEFAULT_EXECMODE="release" # use the release as default
+#export DEFAULT_EXECMODE="CD" # use the continuous deployment image as default
 
 ### The base image used when building a workspace image (one of the ones build in base_images)
-export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with rock core dependencies installed
-# export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_20.04:base # image with rock core dependencies installed
+# export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with rock core dependencies installed
+export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_20.04:base # image with rock core dependencies installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/ros_melodic_18.04:base # image with basic ros melodic installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/ros_noetic_20.04:base # image with basic ros noetic installed
 # export WORKSPACE_BASE_IMAGE=developmentimage/plain_18.04:base # plain image with build_essentials installed
@@ -37,11 +38,12 @@ export WORKSPACE_BASE_IMAGE=developmentimage/rock_master_18.04:base # image with
 # under normal circumstances you should not need to change these
 export WORKSPACE_DEVEL_IMAGE=developmentimage/${PROJECT_NAME}:devel
 export WORKSPACE_RELEASE_IMAGE=developmentimage/${PROJECT_NAME}:release
+export WORKSPACE_CD_IMAGE=developmentimage/${PROJECT_NAME}:CD
 
 # In case your docker container needs special run paramaters
 # like open ports, additional mounts etc.
 # When you change this, you need to recreate the container
-# best way to do this, is to delete the {devel,release}-container_id.txt file
+# best way to do this, run the delete_contianer.bash script
 # often used params:
 # --dns-search=mydomain
 # --net=host
@@ -54,4 +56,10 @@ export ADDITIONAL_DOCKER_RUN_ARGS=" --net=host  --privileged  --dns-search=dfki.
 # export VERBOSE=true
 
 # Make the output as quiet as possible (does not apply to programs started in the container)
-#export SILENT=false
+# export SILENT=false
+
+# mount ccache volume, if enabled, a volume name based on the base image name is generated
+# and mounted to /ccache, this way multiple workspaces in docker_image_development
+# can share a single ccache, CCACHE_DIR is automatically set in the env, just install
+# and enable ccache for your builds
+# export MOUNT_CCACHE_VOLUME=true

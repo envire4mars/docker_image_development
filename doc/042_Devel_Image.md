@@ -7,7 +7,7 @@ The devel images contain project specific libraries and can be pushed to the reg
 
 ### Run From a Devel Image
 
-Just follow the instructions given in [docker usage](doc/020_Usage.md) for using a container and running commands in it.
+Just follow the instructions given in [docker usage](020_Usage.md) for using a container and running commands in it.
 Make sure you have access to the Docker registry if you haven't already pulled the image (might require docker login and potentially a VPN connection).
 Make sure that you use the exec mode `devel` (in your settings.bash or as argument to exec.bash).
 
@@ -16,7 +16,7 @@ The devel container is set up to mount several directories within the host's rep
 
 * **/opt/startscripts** corresponds to the host's `docker_development/startscripts`
 * **/opt/workspace** corresponds to the host's `docker_development/workspace`
-* **/home/devel** corresponds to the host's `docker_development/home`
+* **/home/dockeruser** corresponds to the host's `docker_development/home`
 
 These are initially empty. That means, in order to run applications from the workspace, it needs to be set up (and usually built) at the first run to fully initialize the container.
 
@@ -151,28 +151,19 @@ As a recap, here the steps in short:
     <td>5.</td>
     <td>Find out what OS dependencies are required</td>
     <td> => </td>
-    <td> ROS:<br></br>
-         &nbsp;&nbsp;&nbsp;&nbsp; - Add <code>list_ros_osdeps.bash</code> to your mounted workspace and run it there.<br></br>
-         &nbsp;&nbsp;&nbsp;&nbsp; - Remember to source the ROS environment and <code>rosdep update</code> first<br></br>
-         ROCK:<br></br>
-         &nbsp;&nbsp;&nbsp;&nbsp; - Add <code>list_rock_osdeps.rb</code> to your mounted workspace and run it there.<br></br>
-         &nbsp;&nbsp;&nbsp;&nbsp; - Remember to source your <code>env.sh</code> first.<br></br>
-         </td>
+    <td> Run <code>./exec.bash /opt/write_osdeps.bash</code> or <code>/opt/write_osdeps.bash</code> in your container<br>
+         The dependencies list will be written to image_setup/02_devel_image/workspace_os_dependencies.txt and added to the devel image<br>
+         When you don't use ROCK os ROS put the dependencies manually to the workspace_os_dependencies.txt or the Dockerfile 
+    </td>
  </tr>
  <tr>
     <td>6.</td>
-    <td>Add those OS dependencies for installation to Dockerfile</td>
-    <td> => </td>
-    <td>edit: copy/paste output from previous step into your <code>02_devel_image/Dockerfile</code></td>
- </tr>
- <tr>
-    <td>7.</td>
     <td>Build the initial version of the devel image with OS dependencies</td>
     <td> => </td>
     <td>exec (in <code>image_setup/02_devel_image</code>): <code>bash build.bash</code> </td>
  </tr>
   <tr>
-    <td>8.</td>
+    <td>7.</td>
     <td>You should change the default exec mode to <code>devel</code> and push to your fork after pusing the image.</td>
     <td> => </td>
     <td>edit <code>settings.bash</code> </td>
@@ -199,6 +190,8 @@ You may want to add these lines to the .bashrc of your container:
 git config --global credential.helper 'cache --timeout=2000'
 git config --global url."https://".insteadOf git://
 ```
+The git config can also be used to override git-ssh urls globally to http in case the repositories have git submodules defined with ssh urls.
+e.g. `git config --global url."https://git.hb.dfki.de/".insteadOf git@git.hb.dfki.de:`, it would be even better better is it to use a relative path as submodule url.
 
 
 #### Option 2) SSH (Public Key) Authentication
