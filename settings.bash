@@ -18,8 +18,8 @@ export DOCKER_REGISTRY_AUTOPULL=false
 
 ### The default release mode to use if no mode paramater is given to ./exec.bash or ./stop.bash
 ### The checked in version should reflect the image status and be the highest availale image (base - devel - release)
-export DEFAULT_EXECMODE="base" # Use this only for setting up the initial devel image (modify setup_workspace.bash)
-#export DEFAULT_EXECMODE="devel" # This is used while deveoping code and preparing a relase
+#export DEFAULT_EXECMODE="base" # Use this only for setting up the initial devel image (modify setup_workspace.bash)
+export DEFAULT_EXECMODE="devel" # This is used while deveoping code and preparing a relase
 #export DEFAULT_EXECMODE="release" # use the release as default
 #export DEFAULT_EXECMODE="CD" # use the continuous deployment image as default
 
@@ -56,10 +56,4 @@ export ADDITIONAL_DOCKER_RUN_ARGS=" --net=host  --privileged  --dns-search=dfki.
 # export VERBOSE=true
 
 # Make the output as quiet as possible (does not apply to programs started in the container)
-# export SILENT=false
-
-# mount ccache volume, if enabled, a volume name based on the base image name is generated
-# and mounted to /ccache, this way multiple workspaces in docker_image_development
-# can share a single ccache, CCACHE_DIR is automatically set in the env, just install
-# and enable ccache for your builds
-# export MOUNT_CCACHE_VOLUME=true
+#export SILENT=false

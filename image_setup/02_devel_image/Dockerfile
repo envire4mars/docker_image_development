@@ -5,49 +5,16 @@ FROM ${BASE_IMAGE_NAME}
 # To avoid some errors when fetching apt-get updates. # See: https://stackoverflow.com/a/35976127 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get update && apt-get install -y \
+    keyboard-configuration
+
 # generic packages to install non-workspace dependencies ( those are added later )
 RUN apt-get update && apt-get install -y \
-    bash-completion \ 
-    autoconf  \ 
-    automake  \ 
-    build-essential  \ 
-    castxml  \ 
-    ccache  \ 
-    cmake  \ 
-    graphviz  \ 
-    graphviz-dev  \ 
-    icecc  \ 
-    libboost-dev  \ 
-    libboost-filesystem-dev  \ 
-    libboost-graph-dev  \ 
-    libboost-iostreams-dev  \ 
-    libboost-program-options-dev  \ 
-    libboost-python-dev  \ 
-    libboost-regex-dev  \ 
-    libboost-serialization-dev  \ 
-    libboost-system-dev  \ 
-    libboost-thread-dev  \ 
-    libcgal-dev  \ 
-    libeigen3-dev  \ 
-    libgdal-dev  \ 
-    libgoogle-glog-dev  \ 
-    libjsoncpp-dev  \ 
-    libopencv-dev  \ 
-    libopenscenegraph-dev  \ 
-    libpcl-dev  \ 
-    libpoco-dev  \ 
-    libqglviewer-dev-qt4  \ 
-    libqt4-dev  \ 
-    libqt4-opengl-dev  \ 
-    libtinyxml-dev  \ 
-    libtool  \ 
-    libxml2-dev  \ 
-    libyaml-cpp-dev  \ 
-    pkg-config  \ 
-    python3-dev  \ 
-    qt4-qmake  \ 
-    zlib1g-dev
-
+    bash-completion \
+    ca-certificates \
+    git \
+    vim \
+    vlc-plugin-base 
 
 
 # make sure SHELL variable is set. Crucial for base/scripts! => moved to setup_workspace.bash
